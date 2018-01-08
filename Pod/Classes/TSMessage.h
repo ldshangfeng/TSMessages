@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 // NS_ENUM is now the preferred way to do typedefs. It gives the compiler and debugger more information, which helps everyone.
 // When using SDK 6 or later, NS_ENUM is defined by Apple, so this block does nothing.
 // For SDK 5 or earlier, this is the same definition block Apple uses.
@@ -53,7 +54,8 @@ typedef NS_ENUM(NSInteger, TSMessageNotificationType) {
 typedef NS_ENUM(NSInteger, TSMessageNotificationPosition) {
     TSMessageNotificationPositionTop = 0,
     TSMessageNotificationPositionNavBarOverlay,
-    TSMessageNotificationPositionBottom
+    TSMessageNotificationPositionBottom,
+    TSMessageNotificationPositionNavBarBottom,
 };
 
 /** This enum can be passed to the duration parameter */
@@ -115,6 +117,32 @@ typedef NS_ENUM(NSInteger,TSMessageNotificationDuration) {
                                 duration:(NSTimeInterval)duration;
 
 /** Shows a notification message in a specific view controller with a specific duration
+ @param title The title of the notification view
+ @param subtitle The text that is displayed underneath the title
+ @param type The notification type (Message, Warning, Error, Success)
+ @param messagePosition The position of the message on the screen
+ */
++ (void)showNotificationWithTitle:(NSString *)title
+                         subtitle:(NSString *)subtitle
+                             type:(TSMessageNotificationType)type
+                       atPosition:(TSMessageNotificationPosition)messagePosition;
+
+/** Shows a notification message in a specific view controller with a specific duration
+ @param title The title of the notification view
+ @param subtitle The text that is displayed underneath the title
+ @param type The notification type (Message, Warning, Error, Success)
+ @param messagePosition The position of the message on the screen
+ @param duration The duration of the notification being displayed
+ @param callback The block that should be executed, when the user tapped on the message
+ */
++ (void)showNotificationWithTitle:(NSString *)title
+                         subtitle:(NSString *)subtitle
+                             type:(TSMessageNotificationType)type
+                       atPosition:(TSMessageNotificationPosition)messagePosition
+                         duration:(NSTimeInterval)duration
+                         callback:(void (^)())callback;
+
+/** Shows a notification message at a specific position
  @param viewController The view controller to show the notification in.
  You can use +setDefaultViewController: to set the the default one instead
  @param title The title of the notification view
@@ -194,6 +222,10 @@ typedef NS_ENUM(NSInteger,TSMessageNotificationDuration) {
 /** Indicates whether currently the iOS 7 style of TSMessages is used
  This depends on the Base SDK and the currently used device */
 + (BOOL)iOS7StyleEnabled;
+
+/** Indicates whether currently the iOS 10 style of TSMessages is used
+ This depends on the Base SDK and the currently used device */
++ (BOOL)iOS10StyleEnabled;
 
 /** Indicates whether the current navigationBar is hidden by isNavigationBarHidden 
  on the UINavigationController or isHidden on the navigationBar of the current 

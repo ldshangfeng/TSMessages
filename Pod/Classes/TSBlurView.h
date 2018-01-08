@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIColor *blurTintColor;
 
+@property (nonatomic, strong) UIView *titleView;
+
 @end
