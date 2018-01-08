@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "TSMessages"
-  s.version          = "0.9.13"
+  s.version          = "1.0.0"
   s.summary          = "Easy to use and customizable messages/notifications for iOS à la Tweetbot."
   s.description  = <<-DESC
                     This framework provides an easy to use class to show little notification views on the top of the screen. (à la Tweetbot).
@@ -19,9 +19,8 @@ There are 4 different types already set up for you: Success, Error, Warning, Mes
   s.homepage     = "https://github.com/KrauseFx/TSMessages/"
 
   s.license          = 'MIT'
-  s.author           = { "Felix Krause" => "tsmessages@krausefx.com" }
-  s.source           = { :git => "https://github.com/KrauseFx/TSMessages.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/KrauseFx'
+  s.author           = { "Felix Krause" => "tsmessages@krausefx.com", "lv0" => "lvlin@apexsoft.com.cn" }
+  s.source           = { :git => "http://git.apexsoft.top/iOS/TSMessages.git", :tag => s.version }
 
   s.platform     = :ios, '5.0'
   s.requires_arc = true
